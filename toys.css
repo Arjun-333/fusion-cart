@@ -1,0 +1,231 @@
+/* Toys Styles - Follow Home Page Theme */
+
+:root {
+    --beige-bg: #e4d2c6; /* Beige background */
+    --dark-brown: #2c2220; /* Dark brown */
+    --medium-brown: #3d3130; /* Medium brown */
+    --light-brown: #6d5f5d; /* Light brown */
+    
+    --shop-card-bg: #222020; /* Dark background for shop cards */
+    --card-bg: #2c2523; /* Darker brown for product cards */
+    --sidebar-bg: #222020; /* Dark sidebar background */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: var(--beige-bg);
+    color: var(--dark-brown);
+    font-size: 16px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--dark-brown);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    padding: 8px;
+    width: 200px;
+    border: 1px solid var(--medium-brown);
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.search-icon {
+    color: var(--light-brown);
+    font-size: 20px;
+}
+
+.main-content {
+    padding: 40px 20px;
+}
+
+.hero-section {
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(to right, var(--light-brown), var(--medium-brown));
+    padding: 40px;
+    margin-bottom: 40px;
+}
+
+.hero-text {
+    width: 50%;
+}
+
+.hero-text h1 {
+    font-size: 40px;
+    color: #fff;
+}
+
+.hero-text p {
+    font-size: 18px;
+    color: #fff;
+    margin: 20px 0;
+}
+
+.hero-btn {
+    background-color: var(--light-brown);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.hero-btn:hover {
+    background-color: var(--medium-brown);
+}
+
+.hero-image img {
+    width: 50%;
+    border-radius: 10px;
+}
+
+.categories {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.category-card {
+    background-color: var(--card-bg);
+    width: 30%;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.category-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.category-name {
+    font-size: 20px;
+    color: var(--light-brown);
+    font-weight: bold;
+}
+
+.featured-product {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.product-image img {
+    width: 50%;
+    border-radius: 10px;
+}
+
+.product-details {
+    width: 45%;
+}
+
+.product-details h2 {
+    font-size: 32px;
+    color: var(--dark-brown);
+}
+
+.product-details p {
+    font-size: 18px;
+    color: var(--medium-brown);
+    margin: 20px 0;
+}
+
+.product-price {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--light-brown);
+    margin-bottom: 20px;
+}
+
+.product-btn {
+    background-color: var(--light-brown);
+    color: #fff;
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.product-btn:hover {
+    background-color: var(--medium-brown);
+}
+
+.masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.product-card {
+    background-color: var(--card-bg);
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.product-info h3 {
+    font-size: 20px;
+    color: var(--dark-brown);
+}
+
+.product-info p {
+    font-size: 16px;
+    color: var(--medium-brown);
+    margin-bottom: 20px;
+}
+
+.add-to-cart {
+    background-color: var(--light-brown);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.add-to-cart:hover {
+    background-color: var(--medium-brown);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--dark-brown);
+    color: #fff;
+}

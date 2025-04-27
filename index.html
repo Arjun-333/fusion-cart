@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fusion-Cart - AI E-commerce Frontend</title>
+    <style>
+        :root {
+            --beige-bg: #e4d2c6;
+            --dark-brown: #2c2220;
+            --medium-brown: #3d3130;
+            --light-brown: #6d5f5d;
+            --accent-gold: #c0aa8e;
+            --shop-card-bg: #222020;
+            --card-bg: #2c2523;
+            --sidebar-bg: #222020;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--beige-bg);
+            color: var(--dark-brown);
+            display: flex;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        /* Main container */
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 200px;
+            background-color: var(--sidebar-bg);
+            color: white;
+            padding: 20px 10px;
+        }
+        
+        .logo {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding: 10px;
+            font-weight: bold;
+            color: var(--accent-gold);
+        }
+        
+        .nav-list {
+            list-style: none;
+        }
+        
+        .nav-item {
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .nav-item:hover, .nav-item.active {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-section {
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-size: 12px;
+            color: var(--accent-gold);
+            padding-left: 10px;
+        }
+        
+        .shop-btn {
+            background-color: white;
+            color: var(--dark-brown);
+            border: none;
+            border-radius: 20px;
+            padding: 8px 15px;
+            font-size: 12px;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+        
+        /* Main content */
+        .main-content {
+            flex: 1;
+            background-color: var(--beige-bg);
+            padding: 20px;
+            position: relative;
+        }
+        
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .website-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--dark-brown);
+        }
+        
+        .search-bar {
+            background-color: white;
+            border-radius: 25px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            width: 300px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search-input {
+            border: none;
+            outline: none;
+            flex: 1;
+            font-size: 14px;
+        }
+        
+        .search-icon {
+            color: var(--dark-brown);
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .tab-bar {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .tab {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        
+        .tab.active {
+            background-color: var(--dark-brown);
+            color: white;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .control-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: var(--dark-brown);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        /* Hero section */
+        .hero-section {
+            background-color: var(--card-bg);
+            color: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            position: relative;
+        }
+        
+        .hero-content {
+            flex: 1;
+        }
+        
+        .hero-title {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .hero-subtitle {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 15px;
+            max-width: 80%;
+        }
+        
+        .hero-btn {
+            background-color: white;
+            color: var(--dark-brown);
+            border: none;
+            border-radius: 20px;
+            padding: 8px 15px;
+            font-size: 12px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        
+        .ai-tag {
+            position: absolute;
+            right: 30px;
+            top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        /* Categories section */
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .section-heading {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .view-all {
+            font-size: 14px;
+            color: var(--accent-gold);
+            cursor: pointer;
+        }
+        
+        .categories {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .category-card {
+            background-color: var(--card-bg);
+            color: white;
+            border-radius: 15px;
+            padding: 15px;
+            width: 120px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        
+        .category-img {
+            height: 80px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+        
+        .category-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .category-name {
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        /* Shop section */
+        .shop-section {
+            margin-bottom: 20px;
+        }
+        
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        
+        .shop-card {
+            background-color: var(--shop-card-bg);
+            color: white;
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .shop-card-img {
+            height: 120px;
+            background-color: var(--light-brown);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .shop-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .shop-card-title {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .shop-card-price {
+            font-size: 12px;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+        
+        .shop-card-btn {
+            background-color: white;
+            color: var(--dark-brown);
+            border: none;
+            border-radius: 20px;
+            padding: 5px 10px;
+            font-size: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            align-self: flex-start;
+        }
+        
+        /* Deals section */
+        .deals-section {
+            margin-bottom: 20px;
+        }
+        
+        /* AI Recommendations section */
+        .ai-recommendations {
+            margin-bottom: 20px;
+        }
+        
+        .ai-recommendations .shop-card-img {
+            background-color: var(--accent-gold);
+        }
+        
+        .ai-recommendations .shop-card-title {
+            color: var(--accent-gold);
+        }
+        
+        /* Search dots */
+        .search-dots {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-left: 10px;
+        }
+        
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--dark-brown);
+        }
+        
+        .dot.active {
+            background-color: var(--accent-gold);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">FusionCart</div>
+            <ul class="nav-list">
+                <li class="nav-item active">Home</li>
+                <li class="nav-item">Cart</li>
+                <li class="nav-item">Orders</li>
+                <li class="nav-item">Help</li>
+                <li class="nav-item">Settings</li>
+            </ul>
+            
+            <div class="nav-section">Tools</div>
+            <ul class="nav-list">
+                <li class="nav-item">Payment</li>
+                <li class="nav-item">Account</li>
+            </ul>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="website-name">FusionCart</div>
+                
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Search products...">
+                    <span class="search-icon">🔍</span>
+                </div>
+                
+                <div class="controls">
+                    <div class="control-btn">C</div>
+                    <div class="control-btn">+</div>
+                </div>
+            </div>
+            
+            <!-- Tab Bar -->
+            <div class="tab-bar">
+                <a href="index.html" class="tab active">Home</a>
+                <a href="fashion.html" class="tab">Fashion</a>
+                <a href="electronics.html" class="tab">Electronics</a>
+                <a href="toys.html" class="tab">Toys</a>
+                <a href="furniture.html" class="tab">Furniture</a>
+                
+
+            </div>
+            
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1 class="hero-title">Home</h1>
+                    <p class="hero-subtitle">Recommendations based on your shopping history and product interests</p>
+                    <button class="hero-btn">Show more</button>
+                </div>
+                <div class="hero-image">
+                    <!-- Home decor preview image -->
+                    <img src="/api/placeholder/400/320" alt="Home decor preview">
+                </div>
+                <div class="ai-tag">AI</div>
+            </div>
+            
+            <!-- Categories Section -->
+            <div class="categories-section">
+                <div class="section-title">
+                    <h2 class="section-heading">Seasonal Picks</h2>
+                    <span class="view-all">View all</span>
+                </div>
+                <div class="categories">
+                    <div class="category-card">
+                        <div class="category-img">
+                            <img src="/api/placeholder/120/80" alt="Autumn Decor">
+                        </div>
+                        <div class="category-name">Autumn Decor</div>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-img">
+                            <img src="/api/placeholder/120/80" alt="Candles">
+                        </div>
+                        <div class="category-name">Candles</div>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-img">
+                            <img src="/api/placeholder/120/80" alt="Throws">
+                        </div>
+                        <div class="category-name">Throws</div>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-img">
+                            <img src="/api/placeholder/120/80" alt="Planters">
+                        </div>
+                        <div class="category-name">Planters</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Shop Section -->
+            <div class="shop-section">
+                <div class="section-title">
+                    <h2 class="section-heading">Shop</h2>
+                    <span class="view-all">View all</span>
+                </div>
+                <div class="shop-grid">
+                    <div class="shop-card">
+                        <div class="shop-card-img">
+                            <!-- Vase image -->
+                            <img src="/api/placeholder/200/120" alt="Ceramic Vase">
+                        </div>
+                        <div class="shop-card-title">Ceramic Vase</div>
+                        <div class="shop-card-price">$49.99</div>
+                        <button class="shop-card-btn">Buy Now</button>
+                    </div>
+                    <div class="shop-card">
+                        <div class="shop-card-img">
+                            <!-- Shop Payment image -->
+                            <img src="/api/placeholder/200/120" alt="Payment Plan">
+                        </div>
+                        <div class="shop-card-title">Payment Plan</div>
+                        <div class="shop-card-price">$19.99/mo</div>
+                        <button class="shop-card-btn">Subscribe</button>
+                    </div>
+                    <div class="shop-card">
+                        <div class="shop-card-img">
+                            <!-- Product image -->
+                            <img src="/api/placeholder/200/120" alt="Wall Art">
+                        </div>
+                        <div class="shop-card-title">Wall Art</div>
+                        <div class="shop-card-price">$39.99</div>
+                        <button class="shop-card-btn">Buy Now</button>
+                    </div>
+                    <div class="shop-card">
+                        <div class="shop-card-img">
+                            <!-- Product image -->
+                            <img src="/api/placeholder/200/120" alt="Table Lamp">
+                        </div>
+                        <div class="shop-card-title">Table Lamp</div>
+                        <div class="shop-card-price">$59.99</div>
+                        <button class="shop-card-btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Deals Section -->
+            <div class="deals-section">
+                <div class="section-title">
+                    <h2 class="section-heading">Deals</h2>
+                    <span class="view-all">View all</span>
+                </div>
+                <div class="shop-grid">
+                    <div class="shop-card">
+                        <div class="shop-card-img">
+                            <img src="/api/placeholder/200/120" alt="Throw Pillows">
+                        </div>
+                        <div class="shop-card-title">Throw Pillows</div>
+                        <div class="shop-card-price">$24.99</div>
+                        <button class="shop-card-btn">Buy Now</button>
+                    </div>
+                    <div class="shop-card">
+                        <div class="shop-card-img">
+                            <img src="/api/placeholder/200/120" alt="Wall Clock">
+                        </div>
+                        <div class="shop-card-title">Wall Clock</div>
+                        <div class="shop-card-price">$29.99</div>
+                        <button class="shop-card-btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- AI Recommendations Section -->
+            <div class="ai-recommendations">
+                <div class="section-title">
+                    <h2 class="section-heading">AI Recommendations</h2>
+                    <span class="view-all">View all</span>
+                </div>
+                <div class="shop-grid">
+                    <div class="shop-card">
+                        <div class="shop-card-img">
+                            <!-- AI Recommendation image -->
+                            <img src="/api/placeholder/200/120" alt="Coffee Table">
+                        </div>
+                        <div class="shop-card-title">Coffee Table</div>
+                        <div class="shop-card-price">$129.99</div>
+                        <button class="shop-card-btn">Buy Now</button>
+                    </div>
+                    <div class="shop-card">
+                        <div class="shop-card-img">
+                            <!-- AI Recommendation image -->
+                            <img src="/api/placeholder/200/120" alt="Floor Lamp">
+                        </div>
+                        <div class="shop-card-title">Floor Lamp</div>
+                        <div class="shop-card-price">$89.99</div>
+                        <button class="shop-card-btn">Buy Now</button>
+                    </div>
+                    <div class="shop-card">
+                        <div class="shop-card-img">
+                            <!-- AI Recommendation image -->
+                            <img src="/api/placeholder/200/120" alt="Bookshelf">
+                        </div>
+                        <div class="shop-card-title">Bookshelf</div>
+                        <div class="shop-card-price">$149.99</div>
+                        <button class="shop-card-btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Search Dots (moved from overlay) -->
+            <div class="search-dots" style="position: absolute; top: 60px; right: 20px;">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sidebar navigation
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    navItems.forEach(t) => t.classList.remove("active"));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Tab bar
+            const tabItems = document.querySelectorAll('.tab');
+            tabItems.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    tabItems.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Shop cards hover effect
+            const shopCards = document.querySelectorAll('.shop-card');
+            shopCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.transition = 'transform 0.3s';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
