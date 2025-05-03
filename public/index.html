@@ -3,26 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fusion-Cart AI E-commerce Frontend</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <title>Fusion-Cart - AI E-commerce Frontend</title>
     <style>
       :root {
-        --primary-color: #4f46e5;
-        --secondary-color: #6b7280;
-        --background-color: #f9fafb;
-        --text-color: #374151;
+        --beige-bg: #e4d2c6;
+        --dark-brown: #2c2220;
+        --medium-brown: #3d3130;
+        --light-brown: #6d5f5d;
+        --accent-gold: #c0aa8e;
+        --shop-card-bg: #222020;
+        --card-bg: #2c2523;
+        --sidebar-bg: #222020;
       }
-      body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: var(--background-color);
-        color: var(--text-color);
+
+      * {
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       }
-      .sidebar {
-        width: 250px;
-        height: 100vh;
-        background-color: white;
+
       body {
         background-color: var(--beige-bg);
         color: var(--dark-brown);
@@ -391,7 +391,7 @@
       .dot.active {
         background-color: var(--accent-gold);
       }
-    </link>
+    </style>
   </head>
   <body>
     <div class="container">
@@ -460,7 +460,6 @@
               alt="Home decor preview"
             />
           </div>
-          <div class="ai-tag">AI</div>
         </div>
 
         <!-- Categories Section -->
@@ -659,37 +658,37 @@
 
     <script>
       // JavaScript for interactivity
-      document.addEventListener('DOMContentLoaded', function() {
-          // Sidebar navigation
-          const navItems = document.querySelectorAll('.nav-item');
-          navItems.forEach(item => {
-              item.addEventListener('click', function() {
-                  navItems.forEach(t) => t.classList.remove("active"));
-                  this.classList.add('active');
-              });
+      document.addEventListener("DOMContentLoaded", function () {
+        // Sidebar navigation
+        const navItems = document.querySelectorAll(".nav-item");
+        navItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            navItems.forEach((t) => t.classList.remove("active"));
+            this.classList.add("active");
           });
+        });
 
-          // Tab bar
-          const tabItems = document.querySelectorAll('.tab');
-          tabItems.forEach(tab => {
-              tab.addEventListener('click', function() {
-                  tabItems.forEach(t => t.classList.remove('active'));
-                  this.classList.add('active');
-              });
+        // Tab bar
+        const tabItems = document.querySelectorAll(".tab");
+        tabItems.forEach((tab) => {
+          tab.addEventListener("click", function () {
+            tabItems.forEach((t) => t.classList.remove("active"));
+            this.classList.add("active");
           });
+        });
 
-          // Shop cards hover effect
-          const shopCards = document.querySelectorAll('.shop-card');
-          shopCards.forEach(card => {
-              card.addEventListener('mouseenter', function() {
-                  this.style.transform = 'translateY(-5px)';
-                  this.style.transition = 'transform 0.3s';
-              });
-              card.addEventListener('mouseleave', function() {
-                  this.style.transform = 'translateY(0)';
-              });
+        // Shop cards hover effect
+        const shopCards = document.querySelectorAll(".shop-card");
+        shopCards.forEach((card) => {
+          card.addEventListener("mouseenter", function () {
+            this.style.transform = "translateY(-5px)";
+            this.style.transition = "transform 0.3s";
           });
-        ;
+          card.addEventListener("mouseleave", function () {
+            this.style.transform = "translateY(0)";
+          });
+        });
+      });
     </script>
   </body>
 </html>
