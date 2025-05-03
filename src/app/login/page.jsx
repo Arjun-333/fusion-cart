@@ -1,24 +1,28 @@
 "use client";
+
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function LoginPage() {
   const router = useRouter();
   const { login } = useAuth();
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = (e) => {
     e.preventDefault();
     login();
-    router.push("/index.html"); // Redirect to the static index.html after login
+    router.push("/index.html");
   };
 
   return (
     <main className="relative min-h-screen flex items-center justify-center bg-black text-white overflow-hidden px-4">
-      {/* Background Lights & Gradients */}
+      {/* Background Animations */}
       <motion.div
         className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#111] via-[#1a1a1a] to-black opacity-90 z-0"
         initial={{ opacity: 0 }}
@@ -38,7 +42,7 @@ export default function LoginPage() {
 
       {/* Login Box */}
       <motion.div
-        className="backdrop-blur-xl bg-white/5 border border-white/10 shadow-2xl rounded-3xl p-10 w-full max-w-md z-10"
+        className="relative backdrop-blur-xl bg-white/5 border border-white/10 shadow-2xl rounded-3xl p-10 w-full max-w-md z-10"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
@@ -47,33 +51,43 @@ export default function LoginPage() {
           Step Into the Experience
         </h1>
 
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleLogin} className="space-y-6">
           {/* Username Field */}
-          <div className="mb-4">
-            <label className="block mb-2 text-sm font-medium text-[#e4cdb4]">
+          <div>
+            <label className="block mb-2 text-base font-medium text-[#e4cdb4]">
               Username
             </label>
             <input
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-4 py-2 bg-[#1f1f1f] text-white border border-[#3a3a3a] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c7a17a]"
+              className="w-full px-4 py-3 bg-[#ffffff] text-white text-lg border border-[#ffffff] rounded-md focus:outline-none focus:ring-2 focus:ring-[#c7a17a]"
               required
             />
           </div>
 
-          {/* Password Field */}
-          <div className="mb-4">
-            <label className="block mb-2 text-sm font-medium text-[#e4cdb4]">
+          {/* Password Field with Toggle */}
+          <div>
+            <label className="block mb-2 text-base font-medium text-[#e4cdb4]">
               Password
             </label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 bg-[#1f1f1f] text-white border border-[#3a3a3a] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c7a17a]"
-              required
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-4 py-3 pr-12 bg-[#ffffff] text-white text-lg border border-[#3a3a3a] rounded-md focus:outline-none focus:ring-2 focus:ring-[#c7a17a]"
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute inset-y-0 right-4 flex items-center text-[#c7a17a] hover:text-white"
+                tabIndex={-1}
+              >
+                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
+            </div>
           </div>
 
           {/* Login Button */}
@@ -81,10 +95,31 @@ export default function LoginPage() {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
             type="submit"
-            className="w-full bg-[#c7a17a] text-black py-2 rounded-lg font-semibold transition"
+            className="w-full bg-[#c7a17a] text-black py-3 rounded-md text-lg font-semibold transition"
           >
             Login
           </motion.button>
+
+          {/* Extra Options */}
+          <div className="flex items-center justify-between text-sm text-[#e4cdb4]">
+            <label className="flex items-center space-x-2">
+              <input type="checkbox" className="accent-[#c7a17a]" />
+              <span>Remember Me</span>
+            </label>
+            <a href="#" className="hover:underline text-[#c7a17a]">
+              Forgot Password?
+            </a>
+          </div>
+
+          <div className="text-center text-sm text-[#e4cdb4] mt-4">
+            Don’t have an account?{" "}
+            <a
+              href="/signup"
+              className="text-[#c7a17a] font-medium hover:underline"
+            >
+              Sign Up
+            </a>
+          </div>
         </form>
       </motion.div>
     </main>
