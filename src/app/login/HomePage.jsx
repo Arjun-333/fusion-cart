@@ -1,41 +1,18 @@
+"use client";
 import React, { useState } from "react";
-import "./HomePage.css"; // Ensure your CSS file is properly linked
+import { useRouter } from "next/navigation";
+import { useAuth } from "../context/AuthContext";
+/* Removed import of non-existent CSS file to fix module not found error */
+// import "./HomePage.css";
 
 const HomePage = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const router = useRouter();
+  const { logout } = useAuth();
 
-  const handleLogin = () => {
-    setIsLoggedIn(true); // Directly set the user as logged in
+  const handleLogout = () => {
+    logout();
+    router.push("/login");
   };
-
-  if (!isLoggedIn) {
-    return (
-      <div className="login-container">
-        <h1>Login to FusionCart</h1>
-        <div className="login-form">
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            className="login-input"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="login-input"
-          />
-          <button onClick={handleLogin} className="login-btn">
-            Login
-          </button>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="container">
@@ -112,7 +89,7 @@ const HomePage = () => {
 
       {/* Logout Button */}
       <div className="logout-container">
-        <button onClick={() => setIsLoggedIn(false)} className="logout-btn">
+        <button onClick={handleLogout} className="logout-btn">
           Logout
         </button>
       </div>

@@ -2,15 +2,18 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import { useAuth } from "../context/AuthContext";
 
 export default function LoginPage() {
   const router = useRouter();
+  const { login } = useAuth();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
-    router.push("/"); // Redirect to the homepage regardless of credentials
+    login();
+    router.push("/index.html"); // Redirect to the static index.html after login
   };
 
   return (

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Furniture Collection - Fusion-Cart</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --beige-bg: #e4d2c6;
+        --dark-brown: #2c2220;
+        --medium-brown: #3d3130;
+        --light-brown: #6d5f5d;
+        --accent-gold: #c0aa8e;
+        --shop-card-bg: #222020;
+        --card-bg: #2c2523;
+        --sidebar-bg: #222020;
+      }
+    </style>
+  </head>
+  <body class="bg-[var(--beige-bg)] text-[var(--dark-brown)] font-sans">
+    <div class="flex min-h-screen">
+      <!-- Sidebar -->
+      <aside
+        class="w-64 bg-[var(--sidebar-bg)] text-[var(--accent-gold)] flex flex-col"
+      >
+        <div
+          class="p-6 text-2xl font-bold border-b border-[var(--medium-brown)]"
+        >
+          Fusion-Cart
+        </div>
+        <nav class="flex-1 p-6 space-y-4">
+          <a
+            href="index.html"
+            class="block py-2 px-4 rounded hover:bg-[var(--medium-brown)]"
+            >Home</a
+          >
+          <a
+            href="electronics.html"
+            class="block py-2 px-4 rounded hover:bg-[var(--medium-brown)]"
+            >Electronics</a
+          >
+          <a
+            href="fashion.html"
+            class="block py-2 px-4 rounded hover:bg-[var(--medium-brown)]"
+            >Fashion</a
+          >
+          <a
+            href="furniture.html"
+            class="block py-2 px-4 rounded bg-[var(--medium-brown)]"
+            >Furniture</a
+          >
+          <a
+            href="toys.html"
+            class="block py-2 px-4 rounded hover:bg-[var(--medium-brown)]"
+            >Toys</a
+          >
+        </nav>
+      </aside>
+
+      <!-- Main content -->
+      <main class="flex-1 p-8 overflow-auto">
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-8">
+          <h1 class="text-3xl font-bold">Furniture Collection</h1>
+          <div class="relative w-64">
+            <input
+              type="text"
+              placeholder="Search Furniture..."
+              class="w-full rounded border border-[var(--medium-brown)] px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--dark-brown)]"
+            />
+            <span class="absolute right-3 top-2.5 text-[var(--light-brown)]"
+              >&#128269;</span
+            >
+          </div>
+        </header>
+
+        <!-- Tab Bar -->
+        <nav class="flex space-x-4 mb-8 border-b border-yellow-800">
+          <a
+            href="electronics.html"
+            class="pb-2 border-b-2 border-transparent hover:border-yellow-700"
+            >Electronics</a
+          >
+          <a
+            href="fashion.html"
+            class="pb-2 border-b-2 border-transparent hover:border-yellow-700"
+            >Fashion</a
+          >
+          <a
+            href="furniture.html"
+            class="pb-2 border-b-2 border-yellow-900 font-semibold text-yellow-900"
+            >Furniture</a
+          >
+          <a
+            href="toys.html"
+            class="pb-2 border-b-2 border-transparent hover:border-yellow-700"
+            >Toys</a
+          >
+        </nav>
+
+        <!-- Featured Product Section -->
+        <section
+          class="flex flex-col md:flex-row items-center mb-12 bg-[var(--card-bg)] rounded-lg p-6 shadow-md"
+        >
+          <div class="md:w-1/2 mb-6 md:mb-0">
+            <h2 class="text-4xl font-extrabold mb-4 text-[var(--accent-gold)]">
+              Quality Furniture for Your Home
+            </h2>
+            <p class="text-[var(--light-brown)] mb-6">
+              Explore our range of stylish and durable furniture pieces for
+              every room.
+            </p>
+            <button
+              class="bg-[var(--dark-brown)] text-[var(--beige-bg)] px-6 py-3 rounded hover:bg-[var(--medium-brown)]"
+            >
+              Shop Now
+            </button>
+          </div>
+          <div class="md:w-1/2">
+            <img
+              src="https://via.placeholder.com/500x300"
+              alt="Furniture Trends"
+              class="rounded-lg shadow-lg"
+            />
+          </div>
+        </section>
+
+        <!-- Product Grid -->
+        <section>
+          <h2 class="text-2xl font-bold mb-6">Top Picks</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Product Card -->
+            <div
+              class="bg-[var(--shop-card-bg)] text-[var(--beige-bg)] p-4 rounded-lg shadow-md"
+            >
+              <img
+                src="https://via.placeholder.com/300x200"
+                alt="Product 1"
+                class="rounded-lg mb-4"
+              />
+              <h3 class="text-lg font-semibold mb-2">Modern Sofa</h3>
+              <p class="text-[var(--light-brown)] mb-4">$499</p>
+              <button
+                class="bg-[var(--accent-gold)] text-[var(--dark-brown)] px-4 py-2 rounded hover:bg-[var(--light-brown)]"
+              >
+                Add to Cart
+              </button>
+            </div>
+
+            <!-- Repeat Product Cards -->
+            <div
+              class="bg-[var(--shop-card-bg)] text-[var(--beige-bg)] p-4 rounded-lg shadow-md"
+            >
+              <img
+                src="https://via.placeholder.com/300x200"
+                alt="Product 2"
+                class="rounded-lg mb-4"
+              />
+              <h3 class="text-lg font-semibold mb-2">Dining Table Set</h3>
+              <p class="text-[var(--light-brown)] mb-4">$799</p>
+              <button
+                class="bg-[var(--accent-gold)] text-[var(--dark-brown)] px-4 py-2 rounded hover:bg-[var(--light-brown)]"
+              >
+                Add to Cart
+              </button>
+            </div>
+
+            <div
+              class="bg-[var(--shop-card-bg)] text-[var(--beige-bg)] p-4 rounded-lg shadow-md"
+            >
+              <img
+                src="https://via.placeholder.com/300x200"
+                alt="Product 3"
+                class="rounded-lg mb-4"
+              />
+              <h3 class="text-lg font-semibold mb-2">Office Chair</h3>
+              <p class="text-[var(--light-brown)] mb-4">$199</p>
+              <button
+                class="bg-[var(--accent-gold)] text-[var(--dark-brown)] px-4 py-2 rounded hover:bg-[var(--light-brown)]"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
