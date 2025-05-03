@@ -7,7 +7,13 @@ module.exports = {
     "./styles/**/*.{css}", // Add this to include global styles
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        beige: {
+          100: "#f5f5dc",
+        },
+      },
+    },
   },
   plugins: [],
 };
