@@ -21,7 +21,7 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="relative min-h-screen flex items-center justify-center bg-black text-white overflow-hidden px-4">
+    <main className="block md:hidden relative min-h-screen flex items-center justify-center bg-black text-white px-4 overflow-hidden">
       {/* Background Animations */}
       <motion.div
         className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#111] via-[#1a1a1a] to-black opacity-90 z-0"
@@ -30,45 +30,45 @@ export default function LoginPage() {
         transition={{ duration: 1.2 }}
       />
       <motion.div
-        className="absolute w-[600px] h-[600px] bg-[#8e6e49] blur-3xl opacity-20 rounded-full top-[-100px] left-[-150px] z-0"
+        className="absolute w-[400px] h-[400px] bg-[#8e6e49] blur-3xl opacity-20 rounded-full top-[-100px] left-[-150px] z-0"
         animate={{ scale: [1, 1.2, 1], rotate: [0, 45, 0] }}
         transition={{ duration: 20, repeat: Infinity }}
       />
       <motion.div
-        className="absolute w-[400px] h-[400px] bg-[#c7a17a] blur-2xl opacity-10 rounded-full bottom-[-100px] right-[-100px] z-0"
+        className="absolute w-[300px] h-[300px] bg-[#c7a17a] blur-2xl opacity-10 rounded-full bottom-[-100px] right-[-100px] z-0"
         animate={{ scale: [1, 1.4, 1], rotate: [0, 60, 0] }}
         transition={{ duration: 25, repeat: Infinity }}
       />
 
       {/* Login Box */}
       <motion.div
-        className="relative backdrop-blur-xl bg-white/5 border border-white/10 shadow-2xl rounded-3xl p-10 w-full max-w-md z-10"
+        className="relative w-full max-w-sm p-6 bg-white/5 backdrop-blur-md rounded-2xl shadow-lg border border-white/5 z-10 space-y-6"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <h1 className="text-3xl font-bold mb-6 text-center text-[#e4cdb4] tracking-wide">
+        <h1 className="text-2xl font-semibold text-center text-[#e4cdb4]">
           Step Into the Experience
         </h1>
 
-        <form onSubmit={handleLogin} className="space-y-6">
+        <form onSubmit={handleLogin} className="space-y-5">
           {/* Username Field */}
           <div>
-            <label className="block mb-2 text-base font-medium text-[#e4cdb4]">
+            <label className="block mb-1 text-sm text-[#e4cdb4]">
               Username
             </label>
             <input
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-4 py-3 bg-[#ffffff] text-white text-lg border border-[#ffffff] rounded-md focus:outline-none focus:ring-2 focus:ring-[#c7a17a]"
+              className="w-full px-4 py-2.5 bg-white/10 text-white text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-[#c7a17a]"
               required
             />
           </div>
 
-          {/* Password Field with Toggle */}
+          {/* Password Field */}
           <div>
-            <label className="block mb-2 text-base font-medium text-[#e4cdb4]">
+            <label className="block mb-1 text-sm text-[#e4cdb4]">
               Password
             </label>
             <div className="relative">
@@ -76,16 +76,16 @@ export default function LoginPage() {
                 type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 pr-12 bg-[#ffffff] text-white text-lg border border-[#3a3a3a] rounded-md focus:outline-none focus:ring-2 focus:ring-[#c7a17a]"
+                className="w-full px-4 py-2.5 pr-10 bg-white/10 text-white text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-[#c7a17a]"
                 required
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute inset-y-0 right-4 flex items-center text-[#c7a17a] hover:text-white"
+                className="absolute inset-y-0 right-3 flex items-center text-[#c7a17a] hover:text-white"
                 tabIndex={-1}
               >
-                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
               </button>
             </div>
           </div>
@@ -93,25 +93,25 @@ export default function LoginPage() {
           {/* Login Button */}
           <motion.button
             whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.98 }}
+            whileTap={{ scale: 0.97 }}
             type="submit"
-            className="w-full bg-[#c7a17a] text-black py-3 rounded-md text-lg font-semibold transition"
+            className="w-full bg-[#c7a17a] text-black py-2.5 rounded-md text-sm font-medium"
           >
             Login
           </motion.button>
 
-          {/* Extra Options */}
-          <div className="flex items-center justify-between text-sm text-[#e4cdb4]">
+          {/* Options */}
+          <div className="flex items-center justify-between text-xs text-[#e4cdb4]">
             <label className="flex items-center space-x-2">
               <input type="checkbox" className="accent-[#c7a17a]" />
               <span>Remember Me</span>
             </label>
-            <a href="#" className="hover:underline text-[#c7a17a]">
+            <a href="#" className="text-[#c7a17a] hover:underline">
               Forgot Password?
             </a>
           </div>
 
-          <div className="text-center text-sm text-[#e4cdb4] mt-4">
+          <div className="text-center text-xs text-[#e4cdb4] mt-4">
             Don’t have an account?{" "}
             <a
               href="/signup"
