@@ -17,6 +17,7 @@ module.exports = {
         shopCardBg: "#222020",
         cardBg: "#2c2523",
         sidebarBg: "#222020",
+        textColor: ["visited"],
       },
     },
   },

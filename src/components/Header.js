@@ -1,4 +1,5 @@
 // src/app/components/Header.js
+
 export default function Header() {
   return (
     <header className="bg-gray-900 text-white p-4">
@@ -7,17 +8,26 @@ export default function Header() {
         <nav>
           <ul className="flex space-x-6">
             <li>
-              <a href="#" className="hover:text-yellow-400">
+              <a
+                href="#"
+                className="text-white hover:text-yellow-400 visited:text-white"
+              >
                 Home
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-yellow-400">
+              <a
+                href="#"
+                className="text-white hover:text-yellow-400 visited:text-white"
+              >
                 Shop
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-yellow-400">
+              <a
+                href="#"
+                className="text-white hover:text-yellow-400 visited:text-white"
+              >
                 About
               </a>
             </li>
