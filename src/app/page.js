@@ -1,22 +1,18 @@
 "use client";
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { useAuth } from "./context/AuthContext";
-import HomePage from "./login/HomePage";
+import { useState } from "react";
+import SearchBar from "@/components/SearchBar";
+import SearchResults from "@/components/SearchResults";
 
-export default function Home() {
-  const router = useRouter();
-  const { isAuthenticated } = useAuth();
+export default function HomePage() {
+  const [results, setResults] = useState([]);
 
-  useEffect(() => {
-    if (!isAuthenticated) {
-      router.replace("/login");
-    }
-  }, [isAuthenticated, router]);
-
-  if (!isAuthenticated) {
-    return null; // or a loading spinner
-  }
-
-  return <HomePage />;
+  return (
+    <div className="min-h-screen bg-amber-50 text-amber-900">
+      <h1 className="text-center text-4xl font-bold pt-10">
+        Fusion Cart Search
+      </h1>
+      <SearchBar onResults={setResults} />
+      <SearchResults results={results} />
+    </div>
+  );
 }
