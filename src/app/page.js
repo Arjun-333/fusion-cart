@@ -6,14 +6,23 @@
 "use client";
 
 import { useState } from "react";
-import SearchBar from "/src/components/searchbarx.js"; // Adjust this path!
-import SearchResults from "/src/components/SearchResults.js"; // Assuming you have a component to display results
+import { useRouter } from "next/navigation";
+import { useAuth } from "./context/AuthContext"; // Adjust path if needed
+import SearchBar from "../components/searchbarx.js";
+import SearchResults from "../components/SearchResults.js"; // Assuming you have a component to display results
 
 export default function HomePage() {
+  const router = useRouter();
+  const { logout } = useAuth();
   const [shoppingResults, setShoppingResults] = useState([]);
 
   const handleSearchResults = (results) => {
     setShoppingResults(results);
+  };
+
+  const handleLogout = () => {
+    logout();
+    router.push("/login");
   };
 
   return (
@@ -35,6 +44,23 @@ export default function HomePage() {
         {/* Display Search Results Here */}
         <SearchResults results={shoppingResults} />
       </div>
+
+      <button
+        onClick={handleLogout}
+        style={{
+          padding: "1.5rem 3rem",
+          fontSize: "2rem",
+          borderRadius: "10px",
+          background: "#ff9800",
+          color: "#fff",
+          border: "none",
+          cursor: "pointer",
+          boxShadow: "0 2px 12px rgba(0,0,0,0.2)",
+          letterSpacing: "2px",
+        }}
+      >
+        LOGIN PAGE
+      </button>
     </main>
   );
 }

@@ -8,10 +8,16 @@ import { useAuth } from "../context/AuthContext";
 const HomePage = () => {
   const router = useRouter();
   const { logout } = useAuth();
+  console.log("HomePage rendered");
 
   const handleLogout = () => {
-    logout();
-    router.push("/login");
+    console.log("Logout triggered");
+    if (logout) {
+      logout();
+      router.push("/login");
+    } else {
+      console.error("Logout function is not defined");
+    }
   };
 
   return (

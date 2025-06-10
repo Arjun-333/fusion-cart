@@ -17,11 +17,12 @@ export default function LoginPage() {
   const handleLogin = (e) => {
     e.preventDefault();
     login();
-    router.push("/index.html");
+    router.push("/");
   };
 
   return (
-    <main className="block md:hidden relative min-h-screen flex items-center justify-center bg-black text-white px-4 overflow-hidden">
+    <main className="flex items-center justify-center min-h-screen bg-black text-white px-4 overflow-hidden">
+      {" "}
       {/* Background Animations */}
       <motion.div
         className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#111] via-[#1a1a1a] to-black opacity-90 z-0"
@@ -39,7 +40,6 @@ export default function LoginPage() {
         animate={{ scale: [1, 1.4, 1], rotate: [0, 60, 0] }}
         transition={{ duration: 25, repeat: Infinity }}
       />
-
       {/* Login Box */}
       <motion.div
         className="relative w-full max-w-sm p-6 bg-white/5 backdrop-blur-md rounded-2xl shadow-lg border border-white/5 z-10 space-y-6"
