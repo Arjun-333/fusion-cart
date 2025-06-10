@@ -1,61 +1,58 @@
-"use client"; // Keep this directive at the top
+"use client";
 
-import React, { createContext, useState, useContext, useEffect } from "react"; // Import useEffect
+import React, { createContext, useState, useContext, useEffect } from "react";
 
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [loading, setLoading] = useState(true); // <-- NEW: State to indicate if auth status is being loaded
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // This effect runs once on component mount to check initial authentication status
     const checkAuthStatus = async () => {
-      // Only run on client
-      if (typeof window !== "undefined") {
+      const token = localStorage.getItem("token");
+      if (token) {
         try {
-          const token = localStorage.getItem("token"); // <-- NEW: Check localStorage for your authentication token
-          setIsAuthenticated(!!token && token !== "undefined" && token !== ""); // <-- UPDATED: Enhanced token validation
+          // Example: Validate token via API
+          const response = await fetch("/api/validate-token", {
+            method: "POST",
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          if (response.ok) {
+            setIsAuthenticated(true);
+          } else {
+            throw new Error("Invalid token");
+          }
         } catch (error) {
-          console.error("Error checking authentication status:", error);
+          console.error(error);
           setIsAuthenticated(false);
-        } finally {
-          setLoading(false); // <-- NEW: Authentication status has been determined (loading is complete)
         }
+      } else {
+        setIsAuthenticated(false);
       }
+      setLoading(false);
     };
 
     checkAuthStatus();
-  }, []); // Empty dependency array means this effect runs only once after the initial render
+  }, []);
 
-  const login = (token = "dummy-token") => {
-    // <-- NEW: Add token parameter to login
-    if (typeof window !== "undefined") {
-      localStorage.setItem("token", token); // Store token on login
-      setIsAuthenticated(true);
-    }
+  const login = (token) => {
+    localStorage.setItem("token", token);
+    setIsAuthenticated(true);
   };
 
   const logout = () => {
-    if (typeof window !== "undefined") {
-      localStorage.removeItem("token"); // Remove token on logout
-      setIsAuthenticated(false);
-    }
+    localStorage.removeItem("token");
+    setIsAuthenticated(false);
   };
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, loading, login, logout }}>
-      {" "}
-      {/* <-- NEW: Pass 'loading' in value */}
       {children}
     </AuthContext.Provider>
   );
 };
 
 export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error("useAuth must be used within an AuthProvider");
-  }
-  return context;
+  return useContext(AuthContext);
 };

@@ -1,7 +1,10 @@
 "use client";
 import React from "react";
+import { usePathname } from "next/navigation"; // Import usePathname for route detection
 
 export default function ToysPage() {
+  const pathname = usePathname(); // Get the current route
+
   return (
     <div className="flex min-h-screen bg-[var(--beige-bg)] text-[var(--dark-brown)] font-sans">
       {/* Sidebar */}
@@ -12,31 +15,51 @@ export default function ToysPage() {
         <nav className="flex-1 p-6 space-y-4">
           <a
             href="/"
-            className="block py-2 px-4 rounded hover:bg-[var(--medium-brown)]"
+            className={`block py-2 px-4 rounded ${
+              pathname === "/"
+                ? "bg-[var(--medium-brown)] text-[var(--beige-bg)] font-semibold"
+                : ""
+            }`}
           >
             Home
           </a>
           <a
             href="/electronics"
-            className="block py-2 px-4 rounded hover:bg-[var(--medium-brown)]"
+            className={`block py-2 px-4 rounded ${
+              pathname === "/electronics"
+                ? "bg-[var(--medium-brown)] text-[var(--beige-bg)] font-semibold"
+                : ""
+            }`}
           >
             Electronics
           </a>
           <a
             href="/fashion"
-            className="block py-2 px-4 rounded hover:bg-[var(--medium-brown)]"
+            className={`block py-2 px-4 rounded ${
+              pathname === "/fashion"
+                ? "bg-[var(--medium-brown)] text-[var(--beige-bg)] font-semibold"
+                : ""
+            }`}
           >
             Fashion
           </a>
           <a
             href="/furniture"
-            className="block py-2 px-4 rounded hover:bg-[var(--medium-brown)]"
+            className={`block py-2 px-4 rounded ${
+              pathname === "/furniture"
+                ? "bg-[var(--medium-brown)] text-[var(--beige-bg)] font-semibold"
+                : ""
+            }`}
           >
             Furniture
           </a>
           <a
             href="/toys"
-            className="block py-2 px-4 rounded bg-[var(--medium-brown)]"
+            className={`block py-2 px-4 rounded ${
+              pathname === "/toys"
+                ? "bg-[var(--medium-brown)] text-[var(--beige-bg)] font-semibold"
+                : ""
+            }`}
           >
             Toys
           </a>
@@ -64,25 +87,41 @@ export default function ToysPage() {
         <nav className="flex space-x-4 mb-8 border-b border-yellow-800">
           <a
             href="/electronics"
-            className="pb-2 border-b-2 border-transparent hover:border-yellow-700"
+            className={`pb-2 border-b-2 ${
+              pathname === "/electronics"
+                ? "border-yellow-900 font-semibold text-yellow-900"
+                : "border-transparent"
+            }`}
           >
             Electronics
           </a>
           <a
             href="/fashion"
-            className="pb-2 border-b-2 border-transparent hover:border-yellow-700"
+            className={`pb-2 border-b-2 ${
+              pathname === "/fashion"
+                ? "border-yellow-900 font-semibold text-yellow-900"
+                : "border-transparent"
+            }`}
           >
             Fashion
           </a>
           <a
             href="/furniture"
-            className="pb-2 border-b-2 border-transparent hover:border-yellow-700"
+            className={`pb-2 border-b-2 ${
+              pathname === "/furniture"
+                ? "border-yellow-900 font-semibold text-yellow-900"
+                : "border-transparent"
+            }`}
           >
             Furniture
           </a>
           <a
             href="/toys"
-            className="pb-2 border-b-2 border-yellow-900 font-semibold text-yellow-900"
+            className={`pb-2 border-b-2 ${
+              pathname === "/toys"
+                ? "border-yellow-900 font-semibold text-yellow-900"
+                : "border-transparent"
+            }`}
           >
             Toys
           </a>
@@ -104,7 +143,7 @@ export default function ToysPage() {
           </div>
           <div className="md:w-1/2">
             <img
-              src="" // <-- Add your image link here
+              src="" // Add your image link here
               alt="Toys Trends"
               className="rounded-lg shadow-lg"
             />
@@ -118,7 +157,7 @@ export default function ToysPage() {
             {/* Product Card 1 */}
             <div className="bg-[var(--shop-card-bg)] text-[var(--beige-bg)] p-4 rounded-lg shadow-md">
               <img
-                src="" // <-- Add your image link here
+                src="" // Add your image link here
                 alt="Product 1"
                 className="rounded-lg mb-4"
               />
@@ -136,7 +175,7 @@ export default function ToysPage() {
             {/* Product Card 2 */}
             <div className="bg-[var(--shop-card-bg)] text-[var(--beige-bg)] p-4 rounded-lg shadow-md">
               <img
-                src="" // <-- Add your image link here
+                src="" // Add your image link here
                 alt="Product 2"
                 className="rounded-lg mb-4"
               />
@@ -154,7 +193,7 @@ export default function ToysPage() {
             {/* Product Card 3 */}
             <div className="bg-[var(--shop-card-bg)] text-[var(--beige-bg)] p-4 rounded-lg shadow-md">
               <img
-                src="" // <-- Add your image link here
+                src="" // Add your image link here
                 alt="Product 3"
                 className="rounded-lg mb-4"
               />

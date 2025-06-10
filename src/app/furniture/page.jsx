@@ -43,7 +43,7 @@ export default function FurniturePage() {
         </nav>
       </aside>
 
-      {/* Main content */}
+      {/* Main Content */}
       <main className="flex-1 p-8 overflow-auto">
         {/* Header */}
         <header className="flex justify-between items-center mb-8">
@@ -104,7 +104,7 @@ export default function FurniturePage() {
           </div>
           <div className="md:w-1/2">
             <img
-              src="" // <-- Add your image link here
+              src="https://www.thespruce.com/thmb/w_SeFUWWLs50OEsskdzDziDYQKQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/40.UptownTownhousebyChangoCo-RecreationRoomSeatingArea-7603584a62a54f69a7f10a0ce621c0ca-d474eb2c1c5c43de80802f9aa4846a47.jpg"
               alt="Furniture Trends"
               className="rounded-lg shadow-lg"
             />
@@ -118,8 +118,8 @@ export default function FurniturePage() {
             {/* Product Card 1 */}
             <div className="bg-[var(--shop-card-bg)] text-[var(--beige-bg)] p-4 rounded-lg shadow-md">
               <img
-                src="" // <-- Add your image link here
-                alt="Product 1"
+                src="https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000014306679-1000014306678_01-2100.jpg"
+                alt="Modern Sofa"
                 className="rounded-lg mb-4"
               />
               <h3 className="text-lg font-semibold mb-2">Modern Sofa</h3>
@@ -133,11 +133,12 @@ export default function FurniturePage() {
                 AMAZON
               </a>
             </div>
+
             {/* Product Card 2 */}
             <div className="bg-[var(--shop-card-bg)] text-[var(--beige-bg)] p-4 rounded-lg shadow-md">
               <img
-                src="" // <-- Add your image link here
-                alt="Product 2"
+                src="https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000014077128-1000014077128-1706_01-2100.jpg"
+                alt="Dining Table Set"
                 className="rounded-lg mb-4"
               />
               <h3 className="text-lg font-semibold mb-2">Dining Table Set</h3>
@@ -151,11 +152,12 @@ export default function FurniturePage() {
                 AMAZON
               </a>
             </div>
+
             {/* Product Card 3 */}
             <div className="bg-[var(--shop-card-bg)] text-[var(--beige-bg)] p-4 rounded-lg shadow-md">
               <img
-                src="" // <-- Add your image link here
-                alt="Product 3"
+                src="https://www.planetoffice.in/wp-content/webp-express/webp-images/uploads/2025/01/Meteor-2-800x800.png.webp"
+                alt="Office Chair"
                 className="rounded-lg mb-4"
               />
               <h3 className="text-lg font-semibold mb-2">Office Chair</h3>

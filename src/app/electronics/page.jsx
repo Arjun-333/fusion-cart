@@ -1,7 +1,10 @@
 "use client";
 import React from "react";
+import { usePathname } from "next/navigation"; // Import usePathname for route detection
 
-export default function ElectronicsPage() {
+export default function ElectronicPage() {
+  const pathname = usePathname(); // Get the current route
+
   return (
     <div className="flex min-h-screen bg-[var(--beige-bg)] text-[var(--dark-brown)] font-sans">
       {/* Sidebar */}
@@ -12,31 +15,51 @@ export default function ElectronicsPage() {
         <nav className="flex-1 p-6 space-y-4">
           <a
             href="/"
-            className="block py-2 px-4 rounded hover:bg-[var(--medium-brown)]"
+            className={`block py-2 px-4 rounded ${
+              pathname === "/"
+                ? "bg-[var(--medium-brown)] text-[var(--beige-bg)] font-semibold"
+                : ""
+            }`}
           >
             Home
           </a>
           <a
             href="/electronics"
-            className="block py-2 px-4 rounded bg-[var(--medium-brown)]"
+            className={`block py-2 px-4 rounded ${
+              pathname === "/electronics"
+                ? "bg-[var(--medium-brown)] text-[var(--beige-bg)] font-semibold"
+                : ""
+            }`}
           >
             Electronics
           </a>
           <a
             href="/fashion"
-            className="block py-2 px-4 rounded hover:bg-[var(--medium-brown)]"
+            className={`block py-2 px-4 rounded ${
+              pathname === "/fashion"
+                ? "bg-[var(--medium-brown)] text-[var(--beige-bg)] font-semibold"
+                : ""
+            }`}
           >
             Fashion
           </a>
           <a
             href="/furniture"
-            className="block py-2 px-4 rounded hover:bg-[var(--medium-brown)]"
+            className={`block py-2 px-4 rounded ${
+              pathname === "/furniture"
+                ? "bg-[var(--medium-brown)] text-[var(--beige-bg)] font-semibold"
+                : ""
+            }`}
           >
             Furniture
           </a>
           <a
             href="/toys"
-            className="block py-2 px-4 rounded hover:bg-[var(--medium-brown)]"
+            className={`block py-2 px-4 rounded ${
+              pathname === "/toys"
+                ? "bg-[var(--medium-brown)] text-[var(--beige-bg)] font-semibold"
+                : ""
+            }`}
           >
             Toys
           </a>
@@ -47,7 +70,7 @@ export default function ElectronicsPage() {
       <main className="flex-1 p-8 overflow-auto">
         {/* Header */}
         <header className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold">Electronics Collection</h1>
+          <h1 className="text-3xl font-bold">Electronic Collection</h1>
           <div className="relative w-64">
             <input
               type="text"
@@ -64,25 +87,41 @@ export default function ElectronicsPage() {
         <nav className="flex space-x-4 mb-8 border-b border-yellow-800">
           <a
             href="/electronics"
-            className="pb-2 border-b-2 border-yellow-900 font-semibold text-yellow-900"
+            className={`pb-2 border-b-2 ${
+              pathname === "/electronics"
+                ? "border-yellow-900 font-semibold text-yellow-900"
+                : "border-transparent"
+            }`}
           >
             Electronics
           </a>
           <a
             href="/fashion"
-            className="pb-2 border-b-2 border-transparent hover:border-yellow-700"
+            className={`pb-2 border-b-2 ${
+              pathname === "/fashion"
+                ? "border-yellow-900 font-semibold text-yellow-900"
+                : "border-transparent"
+            }`}
           >
             Fashion
           </a>
           <a
             href="/furniture"
-            className="pb-2 border-b-2 border-transparent hover:border-yellow-700"
+            className={`pb-2 border-b-2 ${
+              pathname === "/furniture"
+                ? "border-yellow-900 font-semibold text-yellow-900"
+                : "border-transparent"
+            }`}
           >
             Furniture
           </a>
           <a
             href="/toys"
-            className="pb-2 border-b-2 border-transparent hover:border-yellow-700"
+            className={`pb-2 border-b-2 ${
+              pathname === "/toys"
+                ? "border-yellow-900 font-semibold text-yellow-900"
+                : "border-transparent"
+            }`}
           >
             Toys
           </a>
@@ -92,11 +131,11 @@ export default function ElectronicsPage() {
         <section className="flex flex-col md:flex-row items-center mb-12 bg-[var(--card-bg)] rounded-lg p-6 shadow-md">
           <div className="md:w-1/2 mb-6 md:mb-0">
             <h2 className="text-4xl font-extrabold mb-4 text-[var(--accent-gold)]">
-              Latest Electronics and Gadgets
+              Discover the Latest in Electronics
             </h2>
             <p className="text-[var(--light-brown)] mb-6">
-              Explore top-rated electronics and cutting-edge gadgets for your
-              modern lifestyle.
+              From smartphones to laptops, find the best deals on the latest
+              gadgets.
             </p>
             <button className="bg-[var(--dark-brown)] text-[var(--beige-bg)] px-6 py-3 rounded hover:bg-[var(--medium-brown)]">
               Shop Now
@@ -104,8 +143,8 @@ export default function ElectronicsPage() {
           </div>
           <div className="md:w-1/2">
             <img
-              src="" // <-- Add your image link here
-              alt="Electronics Trends"
+              src="" // Add your image link here
+              alt="Fashion Trends"
               className="rounded-lg shadow-lg"
             />
           </div>
@@ -118,57 +157,55 @@ export default function ElectronicsPage() {
             {/* Product Card 1 */}
             <div className="bg-[var(--shop-card-bg)] text-[var(--beige-bg)] p-4 rounded-lg shadow-md">
               <img
-                src="" // <-- Add your image link here
+                src="" // Add your image link here
                 alt="Product 1"
                 className="rounded-lg mb-4"
               />
-              <h3 className="text-lg font-semibold mb-2">Smartphone X</h3>
-              <p className="text-[var(--light-brown)] mb-4">$999</p>
+              <h3 className="text-lg font-semibold mb-2">Summer Dress</h3>
+              <p className="text-[var(--light-brown)] mb-4">$49</p>
               <a
-                href="https://www.amazon.in"
+                href="https://www.meesho.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-[var(--accent-gold)] text-[var(--dark-brown)] px-4 py-2 rounded hover:bg-[var(--light-brown)] inline-block text-center"
               >
-                AMAZON
+                MEESHO
               </a>
             </div>
             {/* Product Card 2 */}
             <div className="bg-[var(--shop-card-bg)] text-[var(--beige-bg)] p-4 rounded-lg shadow-md">
               <img
-                src="" // <-- Add your image link here
+                src="" // Add your image link here
                 alt="Product 2"
                 className="rounded-lg mb-4"
               />
-              <h3 className="text-lg font-semibold mb-2">Laptop Pro</h3>
-              <p className="text-[var(--light-brown)] mb-4">$1,499</p>
+              <h3 className="text-lg font-semibold mb-2">Leather Jacket</h3>
+              <p className="text-[var(--light-brown)] mb-4">$199</p>
               <a
-                href="https://www.flipkart.com"
+                href="https://www.myntra.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-[var(--accent-gold)] text-[var(--dark-brown)] px-4 py-2 rounded hover:bg-[var(--light-brown)] inline-block text-center"
               >
-                FLIPKART
+                MYNTRA
               </a>
             </div>
             {/* Product Card 3 */}
             <div className="bg-[var(--shop-card-bg)] text-[var(--beige-bg)] p-4 rounded-lg shadow-md">
               <img
-                src="" // <-- Add your image link here
+                src="" // Add your image link here
                 alt="Product 3"
                 className="rounded-lg mb-4"
               />
-              <h3 className="text-lg font-semibold mb-2">
-                Wireless Headphones
-              </h3>
-              <p className="text-[var(--light-brown)] mb-4">$299</p>
+              <h3 className="text-lg font-semibold mb-2">Sneakers</h3>
+              <p className="text-[var(--light-brown)] mb-4">$89</p>
               <a
-                href="https://www.amazon.in"
+                href="https://www.ajio.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-[var(--accent-gold)] text-[var(--dark-brown)] px-4 py-2 rounded hover:bg-[var(--light-brown)] inline-block text-center"
               >
-                AMAZON
+                AJIO
               </a>
             </div>
           </div>

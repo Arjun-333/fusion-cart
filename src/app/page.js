@@ -1,66 +1,65 @@
 // app/page.js
-// This is your main homepage for your Next.js application
-
-// This makes it a client component, necessary if you have client-side interactions
-// like useState, onClick handlers, etc., within this page or its children (like SearchBar).
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { useAuth } from "./context/AuthContext"; // Adjust path if needed
-import SearchBar from "../components/searchbarx.js";
-import SearchResults from "../components/SearchResults.js"; // Assuming you have a component to display results
+import React from "react";
 
-export default function HomePage() {
-  const router = useRouter();
-  const { logout } = useAuth();
-  const [shoppingResults, setShoppingResults] = useState([]);
-
-  const handleSearchResults = (results) => {
-    setShoppingResults(results);
-  };
-
-  const handleLogout = () => {
-    logout();
-    router.push("/login");
-  };
-
+export default function Page() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Welcome to FusionCart!
-        </p>
-        {/* Potentially add other navigation or header elements here */}
-      </div>
+    <div
+      id="app-root"
+      className="min-h-screen bg-[var(--beige-bg)] text-[var(--dark-brown)] font-sans"
+    >
+      {/* Main Content */}
+      <main className="flex-1 p-8">
+        {/* Header */}
+        <header className="flex justify-between items-center mb-8">
+          <h1 className="text-3xl font-bold">FusionCart</h1>
+          <div className="relative w-64">
+            <input
+              type="text"
+              placeholder="Search products..."
+              className="w-full rounded border border-[var(--medium-brown)] px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--dark-brown)]"
+            />
+            <span className="absolute right-3 top-2.5 text-[var(--light-brown)]">
+              🔍
+            </span>
+          </div>
+        </header>
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        {/* Your SearchBar component goes here */}
-        <h1 className="text-4xl font-bold mb-8">Product Search</h1>
-        <SearchBar onResults={handleSearchResults} />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        {/* Display Search Results Here */}
-        <SearchResults results={shoppingResults} />
-      </div>
-
-      <button
-        onClick={handleLogout}
-        style={{
-          padding: "1.5rem 3rem",
-          fontSize: "2rem",
-          borderRadius: "10px",
-          background: "#ff9800",
-          color: "#fff",
-          border: "none",
-          cursor: "pointer",
-          boxShadow: "0 2px 12px rgba(0,0,0,0.2)",
-          letterSpacing: "2px",
-        }}
-      >
-        LOGIN PAGE
-      </button>
-    </main>
+        {/* Tab Bar */}
+        <nav className="flex space-x-4 mb-8 border-b border-[var(--medium-brown)]">
+          <a
+            href="/"
+            className="pb-2 border-b-2 border-[var(--accent-gold)] font-semibold"
+          >
+            Home
+          </a>
+          <a
+            href="/electronics"
+            className="pb-2 border-b-2 border-transparent hover:border-[var(--accent-gold)]"
+          >
+            Electronics
+          </a>
+          <a
+            href="/fashion"
+            className="pb-2 border-b-2 border-transparent hover:border-[var(--accent-gold)]"
+          >
+            Fashion
+          </a>
+          <a
+            href="/furniture"
+            className="pb-2 border-b-2 border-transparent hover:border-[var(--accent-gold)]"
+          >
+            Furniture
+          </a>
+          <a
+            href="/toys"
+            className="pb-2 border-b-2 border-transparent hover:border-[var(--accent-gold)]"
+          >
+            Toys
+          </a>
+        </nav>
+      </main>
+    </div>
   );
 }
