@@ -80,9 +80,19 @@ const Navbar = () => {
           </div>
 
           {/* Center: Category Links */}
-          <nav style={{ display: 'flex', gap: '24px', justifyContent: 'center', flex: '2 1 0%' }}>
-            {['SKINCARE', 'MAKEUP', 'BALMS', 'BODY', 'FRAGRANCE', 'GOODS', 'SETS', 'SHOP ALL'].map(link => (
-              <Link key={link} to={`/shop?category=${link.toLowerCase().replace(' ', '-')}`} style={{ 
+          <nav style={{ display: 'flex', gap: '24px', justifyContent: 'center', flex: '2 1 0%', alignItems: 'center' }}>
+            <a href="/#foryou" style={{ 
+              fontSize: '11px', 
+              fontWeight: 600, 
+              letterSpacing: '0.06em', 
+              color: '#000',
+              whiteSpace: 'nowrap',
+              textDecoration: 'none'
+            }}>
+              FOR YOU
+            </a>
+            {['ELECTRONICS', 'CLOTHES', 'ACCESSORIES', 'HOME', 'BEAUTY'].map(link => (
+              <Link key={link} to={`/shop?category=${link.toLowerCase()}`} style={{ 
                 fontSize: '11px', 
                 fontWeight: 600, 
                 letterSpacing: '0.06em', 
@@ -92,6 +102,60 @@ const Navbar = () => {
                 {link}
               </Link>
             ))}
+            
+            {/* Dropdown for More */}
+            <div style={{ position: 'relative', display: 'inline-block' }} className="nav-dropdown">
+              <span style={{ 
+                fontSize: '11px', 
+                fontWeight: 600, 
+                letterSpacing: '0.06em', 
+                color: '#000',
+                whiteSpace: 'nowrap',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '4px'
+              }}>
+                MORE <span style={{ fontSize: '8px' }}>▼</span>
+              </span>
+              <div className="dropdown-menu" style={{ 
+                position: 'absolute', 
+                top: '100%', 
+                left: '50%',
+                transform: 'translateX(-50%)',
+                backgroundColor: '#fff', 
+                boxShadow: '0 4px 12px rgba(0,0,0,0.1)', 
+                padding: '12px 0',
+                display: 'none',
+                flexDirection: 'column',
+                minWidth: '150px',
+                zIndex: 100,
+                marginTop: '10px'
+              }}>
+                {['SPORTS', 'TOYS', 'BOOKS', 'GROCERY', 'AUTOMOTIVE'].map(link => (
+                  <Link key={link} to={`/shop?category=${link.toLowerCase()}`} style={{ 
+                    fontSize: '11px', 
+                    fontWeight: 600, 
+                    letterSpacing: '0.06em', 
+                    color: '#000',
+                    padding: '8px 24px',
+                    textDecoration: 'none',
+                    display: 'block'
+                  }}>
+                    {link}
+                  </Link>
+                ))}
+              </div>
+            </div>
+            
+            <style dangerouslySetInnerHTML={{__html: `
+              .nav-dropdown:hover .dropdown-menu {
+                display: flex !important;
+              }
+              .dropdown-menu a:hover {
+                background-color: #f5f5f5;
+              }
+            `}} />
           </nav>
 
           {/* Right: Icon Actions */}
