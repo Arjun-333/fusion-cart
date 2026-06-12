@@ -60,6 +60,8 @@ def get_products(
     max_price: Optional[float] = None,
     is_featured: Optional[bool] = None,
     sort_by: str = "created_at",
+    min_rating: Optional[float] = None,
+    availability: Optional[str] = None,
 ):
     """Return paginated product list with optional filters."""
     # Return mock data — replace with DB query when PostgreSQL is connected
@@ -69,18 +71,43 @@ def get_products(
         products = [p for p in products if p.get("category_id") == category_id]
     if search:
         q = search.lower()
-        products = [p for p in products if q in p["name"].lower() or q in " ".join(p.get("tags", []))]
+        products = [
+            p for p in products
+            if q in p["name"].lower()
+            or q in " ".join(p.get("tags", [])).lower()
+            or q in (p.get("brand") or "").lower()
+            or q in (p.get("short_description") or "").lower()
+        ]
     if min_price is not None:
         products = [p for p in products if p["price"] >= min_price]
     if max_price is not None:
         products = [p for p in products if p["price"] <= max_price]
     if is_featured is not None:
         products = [p for p in products if p.get("is_featured") == is_featured]
+    if min_rating is not None:
+        products = [p for p in products if p.get("rating", 0) >= min_rating]
+    if availability == "in_stock":
+        products = [p for p in products if p.get("stock_quantity", 0) > 0]
+    elif availability == "on_sale":
+        products = [p for p in products if p.get("discount_percent", 0) > 0]
+
+    # Sorting
+    if sort_by == "price_asc":
+        products.sort(key=lambda p: p["price"])
+    elif sort_by == "price_desc":
+        products.sort(key=lambda p: p["price"], reverse=True)
+    elif sort_by == "rating":
+        products.sort(key=lambda p: p.get("rating", 0), reverse=True)
+    elif sort_by == "name_asc":
+        products.sort(key=lambda p: p["name"].lower())
+    elif sort_by == "name_desc":
+        products.sort(key=lambda p: p["name"].lower(), reverse=True)
+    # default: created_at order (natural list order)
 
     total = len(products)
     start = (page - 1) * page_size
     items = products[start: start + page_size]
-    total_pages = (total + page_size - 1) // page_size
+    total_pages = max(1, (total + page_size - 1) // page_size)
     return {"items": items, "total": total, "page": page, "page_size": page_size, "total_pages": total_pages}
 
 

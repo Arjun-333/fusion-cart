@@ -18,11 +18,14 @@ def list_products(
     min_price: Optional[float] = None,
     max_price: Optional[float] = None,
     is_featured: Optional[bool] = None,
+    min_rating: Optional[float] = None,
+    availability: Optional[str] = None,
     sort_by: str = "created_at",
 ):
     """List products with optional filtering, search, and pagination."""
     return product_service.get_products(
-        db, page, page_size, category_id, search, min_price, max_price, is_featured, sort_by
+        db, page, page_size, category_id, search, min_price, max_price,
+        is_featured, sort_by, min_rating, availability
     )
 
 

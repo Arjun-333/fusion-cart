@@ -72,19 +72,47 @@ const HomePage = () => {
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }}>
                 {[1, 2, 3, 4].map(num => (
-                  <Link key={num} to={`/shop?category=${category.toLowerCase()}`} style={{ display: 'flex', flexDirection: 'column', cursor: 'pointer', textDecoration: 'none', color: 'inherit' }}>
-                    <div style={{ background: 'var(--color-secondary)', aspectRatio: '3/4', marginBottom: '16px', overflow: 'hidden' }}>
-                      <img 
-                        src={`https://via.placeholder.com/400x533/F4F4F4/111111?text=${category}+${num}`} 
-                        alt={`${category} ${num}`} 
-                        style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s ease' }} 
-                        onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-                        onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
-                      />
-                    </div>
-                    <h4 style={{ fontSize: '13px', fontWeight: 700, marginBottom: '6px', textTransform: 'uppercase' }}>{category} ITEM {num}</h4>
-                    <p style={{ fontSize: '13px', color: 'var(--color-text)' }}>$199.00</p>
-                  </Link>
+                  <div key={num} style={{ position: 'relative', aspectRatio: '3/4', overflow: 'hidden', background: 'var(--color-secondary)' }}
+                    onMouseEnter={e => e.currentTarget.querySelector('.arrow-btn').style.opacity = '1'}
+                    onMouseLeave={e => e.currentTarget.querySelector('.arrow-btn').style.opacity = '0'}
+                  >
+                    <img 
+                      src={`https://via.placeholder.com/400x533/F4F4F4/111111?text=${category}+${num}`} 
+                      alt={`${category} ${num}`} 
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s ease' }}
+                      onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.04)'}
+                      onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                    />
+                    {/* Arrow button */}
+                    <Link
+                      className="arrow-btn"
+                      to={`/shop?category=${category.toLowerCase()}`}
+                      style={{
+                        position: 'absolute',
+                        bottom: '14px',
+                        right: '14px',
+                        width: '40px',
+                        height: '40px',
+                        backgroundColor: '#fff',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        textDecoration: 'none',
+                        boxShadow: '0 2px 12px rgba(0,0,0,0.18)',
+                        opacity: '0',
+                        transition: 'opacity 0.25s ease, transform 0.25s ease',
+                        transform: 'translateY(4px)',
+                      }}
+                      onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(0px) scale(1.1)'; }}
+                      onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(4px)'; }}
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                      </svg>
+                    </Link>
+                  </div>
                 ))}
               </div>
             </div>
